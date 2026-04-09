@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Matric Study Hub | Past Papers & Memos 2019–2024</title>
+  <!-- Google Fonts: Poppins (modern, clean) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
+      scroll-behavior: smooth;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #e2e8f0;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3b82f6;
+      border-radius: 8px;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #0f2b3d 0%, #1e4a6e 100%);
+      color: white;
+      padding: 48px 0 56px;
+      border-radius: 0 0 40px 40px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    }
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      margin-bottom: 12px;
+    }
+    .hero h1 i {
+      color: #facc15;
+      margin-right: 8px;
+    }
+    .hero p {
+      font-size: 1rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin-top: 8px;
+      font-weight: 400;
+    }
+    .stats-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(4px);
+      padding: 8px 18px;
+      border-radius: 60px;
+      margin-top: 24px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    /* search & filter */
+    .search-section {
+      margin-top: -28px;
+      margin-bottom: 40px;
+      position: relative;
+      z-index: 5;
+    }
+    .search-card {
+      background: white;
+      border-radius: 60px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+      padding: 6px 6px 6px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .search-wrapper {
+      flex: 2;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .search-wrapper i {
+      color: #94a3b8;
+      font-size: 1.2rem;
+    }
+    #searchInput {
+      width: 100%;
+      border: none;
+      padding: 16px 0;
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+      background: transparent;
+      outline: none;
+      font-weight: 500;
+    }
+    #searchInput::placeholder {
+      color: #94a3b8;
+      font-weight: 400;
+    }
+    .filter-btns {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding-right: 8px;
+    }
+    .filter-chip {
+      background: #f1f5f9;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      font-size: 0.8rem;
+      color: #1e293b;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .filter-chip.active {
+      background: #3b82f6;
+      color: white;
+      box-shadow: 0 4px 8px rgba(59,130,246,0.3);
+    }
+    .filter-chip i {
+      margin-right: 6px;
+    }
+
+    /* subjects grid */
+    .subjects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 28px;
+      margin: 40px 0 60px;
+    }
+    .subject-card {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.25s ease;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.03), 0 2px 4px rgba(0,0,0,0.05);
+      border: 1px solid rgba(203, 213, 225, 0.5);
+    }
+    .subject-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 24px 40px -12px rgba(0,0,0,0.2);
+      border-color: #b9d0f0;
+    }
+    .card-header {
+      padding: 20px 20px 12px 20px;
+      border-bottom: 2px solid #eef2ff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .subject-icon {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(145deg, #eef2ff, #e0e7ff);
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: #2563eb;
+    }
+    .card-header h3 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+    }
+    .card-stats {
+      padding: 12px 20px 8px;
+      display: flex;
+      gap: 20px;
+      font-size: 0.75rem;
+      color: #475569;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .card-stats span i {
+      margin-right: 5px;
+      color: #3b82f6;
+    }
+    /* file size display */
+    .file-size-badge {
+      background: #f1f5f9;
+      margin: 12px 20px 0 20px;
+      padding: 8px 12px;
+      border-radius: 32px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #0f172a;
+      width: fit-content;
+    }
+    .file-size-badge i {
+      font-size: 0.8rem;
+      color: #3b82f6;
+    }
+    .action-buttons {
+      padding: 16px 20px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .btn-bundle {
+      background: #0f172a;
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 12px 0;
+      border-radius: 50px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: background 0.2s;
+      text-decoration: none;
+    }
+    .btn-bundle i {
+      font-size: 1rem;
+    }
+    .btn-bundle:active {
+      background: #1e293b;
+    }
+    .btn-view {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      width: 100%;
+      padding: 10px 0;
+      border-radius: 50px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      font-size: 0.85rem;
+      color: #2563eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .btn-view:active {
+      background: #eef2ff;
+    }
+    .no-results {
+      text-align: center;
+      padding: 60px 20px;
+      background: white;
+      border-radius: 48px;
+      margin: 30px 0;
+    }
+    .footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 32px 20px;
+      margin-top: 40px;
+      border-radius: 32px 32px 0 0;
+      font-size: 0.8rem;
+    }
+    @media (max-width: 700px) {
+      .container { padding: 0 18px; }
+      .hero h1 { font-size: 1.8rem; }
+      .search-card {
+        border-radius: 32px;
+        padding: 12px 16px;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .filter-btns { justify-content: center; padding-right: 0; margin-top: 6px; }
+      .subjects-grid { grid-template-columns: 1fr; gap: 20px; }
+      .card-header h3 { font-size: 1.2rem; }
+      .file-size-badge { font-size: 0.65rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="container">
+    <h1><i class="fas fa-graduation-cap"></i> Matric Study Hub</h1>
+    <p>NSC past exam papers & memos (2019–2024). Download full bundles or view individual PDFs. Always know the file size before you download.</p>
+    <div class="stats-badge">
+      <i class="fas fa-database"></i> <span>22+ subjects • 400+ resources</span>
+      <i class="fas fa-chart-simple"></i> <span>File sizes shown for every bundle</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="search-section">
+    <div class="search-card">
+      <div class="search-wrapper">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="Search subject... Mathematics, Physics, Accounting...">
+      </div>
+      <div class="filter-btns" id="filterGroup">
+        <button class="filter-chip active" data-filter="all"><i class="fas fa-th-large"></i> All</button>
+        <button class="filter-chip" data-filter="stem"><i class="fas fa-flask"></i> STEM</button>
+        <button class="filter-chip" data-filter="commerce"><i class="fas fa-chart-line"></i> Commerce</button>
+        <button class="filter-chip" data-filter="humanities"><i class="fas fa-book-open"></i> Humanities</button>
+        <button class="filter-chip" data-filter="languages"><i class="fas fa-language"></i> Languages</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="subjectsGrid" class="subjects-grid"></div>
+</div>
+
+<div class="footer">
+  <p><i class="fas fa-download"></i> All papers sourced from Department of Basic Education. Free for learning.</p>
+  <p style="margin-top: 8px;">💡 <strong>Offline tip:</strong> Tap "Download Bundle" to save ZIP (size shown). After download, files stay on your phone — no internet needed.</p>
+  <p style="margin-top: 12px;">Made with <i class="fas fa-heart" style="color:#ef4444;"></i> for SA matriculants · 2019–2024 NSC</p>
+</div>
+<script> 
+  // ------------------------------------------------------------
+  // SUBJECT DATABASE with PRECISE FILE SIZES (in MB / KB)
+  // Each bundle path points to actual ZIP location (adjust to your server)
+  // fileSizeRaw = size in MB (e.g., 24.8 MB) or you can use a human string.
+  // For demonstration, sizes are realistic for typical subject bundles (6–45 MB)
+  // ------------------------------------------------------------
+  const subjectsData = [
+    { name: "Mathematics", icon: "📐", category: "stem", paperCount: 24, memoCount: 18, bundlePath: "zips/Mathematics_Complete.zip", fileSizeRaw: 28.4, fileSizeDisplay: "28.4 MB", subjectPage: "subject-pages/mathematics.html" },
+    { name: "Physical Sciences", icon: "⚛️", category: "stem", paperCount: 20, memoCount: 16, bundlePath: "zips/Physical_Sciences_2019-2024.zip", fileSizeRaw: 32.1, fileSizeDisplay: "32.1 MB", subjectPage: "physical-sciences.html" },
+    { name: "English HL", icon: "📖", category: "languages", paperCount: 18, memoCount: 12, bundlePath: "zips/English_HL_2019-2024.zip", fileSizeRaw: 19.7, fileSizeDisplay: "19.7 MB", subjectPage: "english.html" },
+    { name: "Life Sciences", icon: "🧬", category: "stem", paperCount: 20, memoCount: 14, bundlePath: "zips/Life_Sciences_2019-2024.zip", fileSizeRaw: 35.2, fileSizeDisplay: "35.2 MB", subjectPage: "life-sciences.html" },
+    { name: "Accounting", icon: "📊", category: "commerce", paperCount: 16, memoCount: 12, bundlePath: "zips/Accounting_2019-2024.zip", fileSizeRaw: 26.3, fileSizeDisplay: "26.3 MB", subjectPage: "accounting.html" },
+    { name: "Business Studies", icon: "💼", category: "commerce", paperCount: 16, memoCount: 12, bundlePath: "zips/Business_Studies_2019-2024.zip", fileSizeRaw: 22.8, fileSizeDisplay: "22.8 MB", subjectPage: "business-studies.html" },
+    { name: "Economics", icon: "📈", category: "commerce", paperCount: 16, memoCount: 12, bundlePath: "zips/Economics_2019-2024.zip", fileSizeRaw: 24.1, fileSizeDisplay: "24.1 MB", subjectPage: "economics.html" },
+    { name: "Geography", icon: "🌍", category: "humanities", paperCount: 16, memoCount: 12, bundlePath: "zips/Geography_2019-2024.zip", fileSizeRaw: 30.5, fileSizeDisplay: "30.5 MB", subjectPage: "geography.html" },
+    { name: "History", icon: "🏛️", category: "humanities", paperCount: 16, memoCount: 12, bundlePath: "zips/History_2019-2024.zip", fileSizeRaw: 27.9, fileSizeDisplay: "27.9 MB", subjectPage: "history.html" },
+    { name: "Mathematical Literacy", icon: "🧮", category: "stem", paperCount: 20, memoCount: 16, bundlePath: "zips/Mathematical_Literacy_2019-2024.zip", fileSizeRaw: 23.4, fileSizeDisplay: "23.4 MB", subjectPage: "maths-literacy.html" },
+    { name: "Afrikaans FAL", icon: "🇿🇦", category: "languages", paperCount: 18, memoCount: 12, bundlePath: "zips/Afrikaans_2019-2024.zip", fileSizeRaw: 18.2, fileSizeDisplay: "18.2 MB", subjectPage: "afrikaans.html" },
+    { name: "IsiZulu HL", icon: "🗣️", category: "languages", paperCount: 18, memoCount: 12, bundlePath: "zips/IsiZulu_2019-2024.zip", fileSizeRaw: 17.5, fileSizeDisplay: "17.5 MB", subjectPage: "isizulu.html" },
+    { name: "Information Technology", icon: "💻", category: "stem", paperCount: 14, memoCount: 10, bundlePath: "zips/IT_2019-2024.zip", fileSizeRaw: 42.0, fileSizeDisplay: "42 MB", subjectPage: "it.html" },
+    { name: "Consumer Studies", icon: "🛍️", category: "commerce", paperCount: 12, memoCount: 10, bundlePath: "zips/Consumer_Studies_2019-2024.zip", fileSizeRaw: 15.3, fileSizeDisplay: "15.3 MB", subjectPage: "consumer-studies.html" },
+    { name: "Tourism", icon: "✈️", category: "commerce", paperCount: 14, memoCount: 10, bundlePath: "zips/Tourism_2019-2024.zip", fileSizeRaw: 21.6, fileSizeDisplay: "21.6 MB", subjectPage: "tourism.html" },
+    { name: "Agricultural Sciences", icon: "🌾", category: "stem", paperCount: 16, memoCount: 12, bundlePath: "zips/Agricultural_Sciences_2019-2024.zip", fileSizeRaw: 29.4, fileSizeDisplay: "29.4 MB", subjectPage: "agricultural-sciences.html" },
+    { name: "Visual Arts", icon: "🎨", category: "humanities", paperCount: 10, memoCount: 8, bundlePath: "zips/Visual_Arts_2019-2024.zip", fileSizeRaw: 38.7, fileSizeDisplay: "38.7 MB", subjectPage: "visual-arts.html" },
+    { name: "Dramatic Arts", icon: "🎭", category: "humanities", paperCount: 10, memoCount: 8, bundlePath: "zips/Dramatic_Arts_2019-2024.zip", fileSizeRaw: 14.2, fileSizeDisplay: "14.2 MB", subjectPage: "dramatic-arts.html" },
+    { name: "Civil Technology", icon: "🏗️", category: "stem", paperCount: 12, memoCount: 10, bundlePath: "zips/Civil_Tech_2019-2024.zip", fileSizeRaw: 33.5, fileSizeDisplay: "33.5 MB", subjectPage: "civil-tech.html" },
+    { name: "Electrical Technology", icon: "⚡", category: "stem", paperCount: 12, memoCount: 10, bundlePath: "zips/Electrical_Tech_2019-2024.zip", fileSizeRaw: 31.8, fileSizeDisplay: "31.8 MB", subjectPage: "electrical-tech.html" },
+    { name: "Mechanical Technology", icon: "🔧", category: "stem", paperCount: 12, memoCount: 10, bundlePath: "zips/Mechanical_Tech_2019-2024.zip", fileSizeRaw: 34.2, fileSizeDisplay: "34.2 MB", subjectPage: "mechanical-tech.html" },
+    { name: "Religion Studies", icon: "🕊️", category: "humanities", paperCount: 10, memoCount: 8, bundlePath: "zips/Religion_Studies_2019-2024.zip", fileSizeRaw: 12.9, fileSizeDisplay: "12.9 MB", subjectPage: "religion-studies.html" }
+  ];
+
+  let currentFilter = "all";
+  let currentSearch = "";
+
+  function formatSizeForDisplay(sizeMB) {
+    // if you want to show something like "24.8 MB" or convert to KB if less than 1 MB
+    if (sizeMB < 1) return `${(sizeMB * 1024).toFixed(0)} KB`;
+    return `${sizeMB.toFixed(1)} MB`;
+  }
+
+  function renderSubjects() {
+    const grid = document.getElementById("subjectsGrid");
+    let filtered = [...subjectsData];
+    
+    if (currentFilter !== "all") {
+      filtered = filtered.filter(sub => sub.category === currentFilter);
+    }
+    if (currentSearch.trim() !== "") {
+      const searchLower = currentSearch.trim().toLowerCase();
+      filtered = filtered.filter(sub => sub.name.toLowerCase().includes(searchLower));
+    }
+    
+    if (filtered.length === 0) {
+      grid.innerHTML = `<div class="no-results">
+        <i class="fas fa-folder-open"></i>
+        <p>No subjects found 😓 <br> Try a different keyword or reset filter.</p>
+      </div>`;
+      return;
+    }
+    
+    grid.innerHTML = filtered.map(sub => {
+      // display human-friendly file size (already have fileSizeDisplay but we recalc to be dynamic)
+      const sizeLabel = sub.fileSizeDisplay ? sub.fileSizeDisplay : formatSizeForDisplay(sub.fileSizeRaw);
+      return `
+      <div class="subject-card" data-category="${sub.category}" data-name="${sub.name.toLowerCase()}">
+        <div class="card-header">
+          <div class="subject-icon">${sub.icon}</div>
+          <h3>${sub.name}</h3>
+        </div>
+        <div class="card-stats">
+          <span><i class="fas fa-file-pdf"></i> ${sub.paperCount} papers</span>
+          <span><i class="fas fa-check-circle"></i> ${sub.memoCount} memos</span>
+        </div>
+        <div class="file-size-badge">
+          <i class="fas fa-hdd"></i> Bundle size: <strong>${sizeLabel}</strong>
+          <i class="fas fa-database" style="margin-left: 4px; font-size: 0.7rem;"></i>
+        </div>
+        <div class="action-buttons">
+          <a href="${sub.bundlePath}" class="btn-bundle" download><i class="fas fa-download"></i> Download Bundle (ZIP)</a>
+          <a href="${sub.subjectPage}" class="btn-view"><i class="fas fa-eye"></i> View all papers & memos (1 by 1)</a>
+        </div>
+      </div>
+    `}).join("");
+  }
+  
+  // event handlers
+  const searchInput = document.getElementById("searchInput");
+  searchInput.addEventListener("input", (e) => {
+    currentSearch = e.target.value;
+    renderSubjects();
+  });
+  
+  const filterBtns = document.querySelectorAll(".filter-chip");
+  function setActiveFilter(activeVal) {
+    filterBtns.forEach(btn => {
+      const val = btn.getAttribute("data-filter");
+      if (val === activeVal) btn.classList.add("active");
+      else btn.classList.remove("active");
+    });
+  }
+  filterBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      currentFilter = btn.getAttribute("data-filter");
+      setActiveFilter(currentFilter);
+      renderSubjects();
+    });
+  });
+  
+  renderSubjects();
+  
+  // Optional: additional client-side tip about offline usage & bundle sizes
+  console.log("StudyHub active: file sizes are displayed for each subject ZIP bundle.");
+</script>
+</body>
+</html>

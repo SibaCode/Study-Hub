@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Mathematics Past Papers - Ongcwti</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+        }
+        .header {
+            background: linear-gradient(135deg, #0f2b3d 0%, #1e4a6e 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .header h1 { font-size: 2rem; margin-bottom: 8px; }
+        .header h1 i { color: #facc15; margin-right: 10px; }
+        .header p { opacity: 0.9; font-size: 0.95rem; }
+        .header-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            margin-top: 12px;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 24px 20px; }
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            color: #1e4a6e;
+            padding: 10px 20px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.2s;
+        }
+        .back-button:hover { background: #f1f5f9; transform: translateX(-3px); }
+        
+        .bundle-section {
+            background: linear-gradient(135deg, #e8f0fe, #d4e4fc);
+            border-radius: 28px;
+            padding: 28px 24px;
+            margin-bottom: 32px;
+            text-align: center;
+            border: 2px solid #3b82f6;
+        }
+        .bundle-section h3 { font-size: 1.4rem; color: #0f172a; margin-bottom: 8px; }
+        .bundle-btn {
+            background: #0f172a;
+            color: white;
+            padding: 14px 36px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 16px;
+            transition: all 0.2s;
+        }
+        .bundle-btn:hover { background: #1e293b; transform: scale(1.02); }
+        
+        /* Collapsible Year Sections */
+        .year-section {
+            background: white;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .year-header {
+            background: #0f172a;
+            color: white;
+            padding: 16px 24px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .year-header:hover { background: #1e293b; }
+        .year-header i { transition: transform 0.3s ease; }
+        .year-header .chevron { font-size: 0.9rem; }
+        .year-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+        .year-content.open {
+            max-height: 800px;
+            transition: max-height 0.5s ease-in;
+        }
+        .papers-list { padding: 8px 0; }
+        .paper-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 24px;
+            border-bottom: 1px solid #f0f2f5;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .paper-row:hover { background: #fafcff; }
+        .paper-info { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+        .paper-icon { width: 32px; font-size: 1.1rem; }
+        .paper-name { font-weight: 500; font-size: 0.95rem; }
+        .paper-type {
+            font-size: 0.7rem;
+            padding: 3px 10px;
+            border-radius: 20px;
+            background: #eef2ff;
+            color: #2563eb;
+        }
+        .paper-type.memo { background: #dcfce7; color: #166534; }
+        .download-btn {
+            background: #3b82f6;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+        .download-btn:hover { background: #2563eb; }
+        .footer {
+            background: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 32px 20px;
+            margin-top: 48px;
+            font-size: 0.75rem;
+        }
+        @media (max-width: 700px) {
+            .header h1 { font-size: 1.5rem; }
+            .paper-row { flex-direction: column; align-items: flex-start; }
+            .download-btn { align-self: flex-start; }
+            .year-header { padding: 14px 18px; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1><i class="fas fa-calculator"></i> Ongcwti · Mathematics</h1>
+    <p>NSC Past Papers & Memos | 2019 - 2024</p>
+    <div class="header-badge"><i class="fas fa-mobile-alt"></i> Tap year to expand · Works offline</div>
+</div>
+
+<div class="container">
+    <a href="../index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i> Back to all subjects
+    </a>
+
+    <div class="bundle-section">
+        <h3><i class="fas fa-download"></i> Download Complete Bundle</h3>
+        <p>Get ALL Mathematics papers + memos (2019-2024) in one ZIP file</p>
+        <a href="zips/Mathematics_Complete_2019-2024.zip" class="bundle-btn" download>
+            <i class="fas fa-file-archive"></i> Download Full Bundle (28.4 MB)
+        </a>
+        <div style="font-size: 0.75rem; margin-top: 12px;">
+            <i class="fas fa-check-circle"></i> Includes: 12 papers + 12 memos
+        </div>
+    </div>
+
+    <!-- 2024 -->
+    <div class="year-section">
+        <div class="year-header" onclick="toggleYear(this)">
+            <span><i class="fas fa-calendar-alt"></i> 2024 November</span>
+            <i class="fas fa-chevron-down chevron"></i>
+        </div>
+        <div class="year-content">
+            <div class="papers-list">
+                <div class="paper-row"><div class="paper-info"><span class="paper-icon">📄</span><span class="paper-name">Paper 1</span><span class="paper-type">Paper</span></div><a href="papers/2024/Mathematics_P1_2024.pdf" class="download-btn" download><i class="fas fa-download"></i> Download</a></div>
+                <div class="paper-row"><div class="paper-info"><span class="paper-icon">✅</span><span class="paper-name">Memo 1</span><span class="paper-type memo">Memo</span></div><a href="papers/2024/Mathematics_Memo1_2024.pdf" class="download-btn" download><i class="fas fa-download"></i> Download</a></div>
+                <div class="paper-row"><div class="paper-info"><span class="paper-icon">📄</span><span class="paper-name">Paper 2</span><span class="paper-type">Paper</span></div><a href="papers/2024/Mathematics_P2_2024.pdf" class="download-btn" download><i class="fas fa-download"></i> Download</a></div>
+                <div class="paper-row"><div class="paper-info"><span class="paper-icon">✅</span><span class="paper-name">Memo 2</span><span class="paper-type memo">Memo</span></div><a href="papers/2024/Mathematics_Memo2_2024.pdf" class="download-btn" download><i class="fas fa-download"></i> Download</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2023 -->
+    <div class="year-section">
+        <div class="year-header" onclick="toggleYear(this)">
+            <span><i class="fas fa-calendar-alt"></i> 2023 November</span>
+            <i class="fas fa-chevron-down chevron"></i>
+        </div>
+        <div class="year-content">
+            <div class="papers-list">
+                <div class="paper-row"><div class="paper-info"><span class="paper-icon">📄</span><span class="paper-name">Paper 1</span><span class="paper-type">Paper</span></div><a href="papers/2023/Mathematics_P1_2023.pdf" class="download-btn" download><i class="fas fa-download"></i> Download</a></div>
+                <div class="paper-row"><div class="paper-info"><span class="paper-icon">✅</span><span class="paper-name">Memo 1</span><span class="paper-type memo">Memo</span></div><a href="papers/2023/Mathematics_Memo1_2023.pdf" class="download-btn" download><i class="fas fa-download"></i> Download</a></div>
+                <div class="paper-row"><div class="paper-info"><span class="paper-icon">📄</span><span class="paper-name">Paper 2</span><span class="paper-type">Paper</span></div><a href="papers/2023/Mathematics_P2_2023.pdf" class="download-btn" download><i class="fas fa-download"></i> Download</a></div>
+                <div class="paper-row"><div class="paper-info"><span class="paper-icon">✅</span><span class="paper-name">Memo 2</span><span class="paper-type memo">Memo</span></div><a href="papers/2023/Mathematics_Memo2_2023.pdf" class="download-btn" download><i class="fas fa-download"></i> Download</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2022 -->
+    <div class="year-section">
+        <div class="year-header" onclick="toggleYear(this)">
+            <span><i class="fas fa-calendar-alt"></i> 2022 November</span>
+            <i class="fas fa-chevron-down chevron"></i>
+        </div>
+        <div class="year-content">
+            <div class="papers-list">
+                <div class="paper-row"><div class="paper-info"><span class="paper-icon">📄</span><span class="paper-name">Paper 1</span><span class="paper-type">Paper</span></div><a href="papers/2022/Mathematics_P1_2022.pdf" class="download-btn" download><i class="fas fa-download"></i> Download</a></div>
+                <div class="paper-row"><div class="paper-info"><span class="paper-icon">✅</span><span class="paper-name">Memo 1</span><span class="paper-type memo">Memo</span></div><a href="papers/2022/Mathematics_Memo1_2022.pdf" class="download-btn" download><i class="fas fa-download"></i> Download</a></div>
+                <div class="paper-row"><div class="paper-info"><span class="paper-icon">📄</span><span class="paper-name">Paper 2</span><span class="paper-type">Paper</span></div><a href="papers/2022/Mathematics_P2_2022.pdf" class="download-btn" download><i class="fas fa-download"></i> Download</a></div>
+                <div class="paper-row"><div class="paper-info"><span class="paper-icon">✅</span><span class="paper-name">Memo 2</span><span class="paper-type memo">Memo</span></div><a href="papers/2022/Mathematics_Memo2_2022.pdf" class="download-btn" download><i class="fas fa-download"></i> Download</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2021 -->
+    <div class="year-section">
+        <div class="year-header" onclick="toggleYear(this)">
+            <span><i class="fas fa-calendar-alt"></i> 2021 November</span>
+            <i class="fas fa-chevron-down chevron"></i>
+        </div>
+        <div class="year-content">
+            <div class="papers-list">
+                <div class="paper-row"><div class="paper-info"><span class="paper-icon">📄</span><span class="paper-name">Paper 1</span><span class="paper-type">Paper</span></div><a href="papers/2021/Mathematics_P1_2021.pdf" class="download-btn" download><i class="fas fa-download"></i> Download</a></div>
+                <div class="paper-row"><div class="paper-info"><span class="paper-icon">✅</span><span class="paper-name">Memo 1</span><span class="paper-type memo">Memo</span></div><a href="papers/2021/Mathematics_Memo1_2021.pdf" class="download-btn" download><i class="fas fa-download"></i> Download</a></div>
+                <div class="paper-row"><div class="paper-info"><span class="paper-icon">📄</span><span class="paper-name">Paper 2</span><span class="paper-type">Paper</span></div><a href="papers/2021/Mathematics_P2_2021.pdf" class="download-btn" download><i class="fas fa-download"></i> Download</a></div>
+                <div class="paper-row"><div class="paper-info"><span class="paper-icon">✅</span><span class="paper-name">Memo 2</span><span class="paper-type memo">Memo</span></div><a href="papers/2021/Mathematics_Memo2_2021.pdf" class="download-btn" download><i class="fas fa-download"></i> Download</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2020 -->
+    <div class="year-section">
+        <div class="year-header" onclick="toggleYear(this)">
+            <span><i class="fas fa-calendar-alt"></i> 2020 November</span>
+            <i class="fas fa-chevron-down chevron"></i>
+        </div>
+        <div class="year-content">
+            <div class="papers-list">
+                <div class="paper-row"><div class="paper-info"><span class="paper-icon">📄</span><span class="paper-name">Paper 1</span><span class="paper-type">Paper</span></div><a href="papers/2020/Mathematics_P1_2020.pdf" class="download-btn" download><i class="fas fa-download"></i> Download</a></div>
+                <div class="paper-row"><div class="paper-info"><span class="paper-icon">✅</span><span class="paper-name">Memo 1</span><span class="paper-type memo">Memo</span></div><a href="papers/2020/Mathematics_Memo1_2020.pdf" class="download-btn" download><i class="fas fa-download"></i> Download</a></div>
+                <div class="paper-row"><div class="paper-info"><span class="paper-icon">📄</span><span class="paper-name">Paper 2</span><span class="paper-type">Paper</span></div><a href="papers/2020/Mathematics_P2_2020.pdf" class="download-btn" download><i class="fas fa-download"></i> Download</a></div>
+                <div class="paper-row"><div class="paper-info"><span class="paper-icon">✅</span><span class="paper-name">Memo 2</span><span class="paper-type memo">Memo</span></div><a href="papers/2020/Mathematics_Memo2_2020.pdf" class="download-btn" download><i class="fas fa-download"></i> Download</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2019 -->
+    <div class="year-section">
+        <div class="year-header" onclick="toggleYear(this)">
+            <span><i class="fas fa-calendar-alt"></i> 2019 November</span>
+            <i class="fas fa-chevron-down chevron"></i>
+        </div>
+        <div class="year-content">
+            <div class="papers-list">
+                <div class="paper-row"><div class="paper-info"><span class="paper-icon">📄</span><span class="paper-name">Paper 1</span><span class="paper-type">Paper</span></div><a href="papers/2019/Mathematics_P1_2019.pdf" class="download-btn" download><i class="fas fa-download"></i> Download</a></div>
+                <div class="paper-row"><div class="paper-info"><span class="paper-icon">✅</span><span class="paper-name">Memo 1</span><span class="paper-type memo">Memo</span></div><a href="papers/2019/Mathematics_Memo1_2019.pdf" class="download-btn" download><i class="fas fa-download"></i> Download</a></div>
+                <div class="paper-row"><div class="paper-info"><span class="paper-icon">📄</span><span class="paper-name">Paper 2</span><span class="paper-type">Paper</span></div><a href="papers/2019/Mathematics_P2_2019.pdf" class="download-btn" download><i class="fas fa-download"></i> Download</a></div>
+                <div class="paper-row"><div class="paper-info"><span class="paper-icon">✅</span><span class="paper-name">Memo 2</span><span class="paper-type memo">Memo</span></div><a href="papers/2019/Mathematics_Memo2_2019.pdf" class="download-btn" download><i class="fas fa-download"></i> Download</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <p><i class="fas fa-graduation-cap"></i> Ongcwti · Free Matric Past Papers</p>
+    <p>All papers sourced from Department of Basic Education</p>
+    <p style="margin-top: 8px;">💡 <i class="fas fa-download"></i> Tap any PDF to download · Saves to your phone · Study offline</p>
+</div>
+
+<script>
+    function toggleYear(headerElement) {
+        const content = headerElement.nextElementSibling;
+        const chevron = headerElement.querySelector('.chevron');
+        
+        content.classList.toggle('open');
+        
+        if (content.classList.contains('open')) {
+            chevron.style.transform = 'rotate(180deg)';
+        } else {
+            chevron.style.transform = 'rotate(0deg)';
+        }
+    }
+    
+    // Open the current year by default (2024)
+    document.addEventListener('DOMContentLoaded', function() {
+        const firstYear = document.querySelector('.year-section .year-header');
+        if (firstYear) {
+            setTimeout(() => {
+                toggleYear(firstYear);
+            }, 100);
+        }
+    });
+</script>
+</body>
+</html>
